@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@keyframes fadeLoop {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fadeLoop {
+  animation-name: fadeLoop;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+/* Hide unwanted pseudo arrows or scrollbars */
+img::before,
+img::after {
+  content: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb; /* Tailwind gray-200 */
+  border-radius: 3px;
+}
+
+
+   @keyframes blob {
+  0% { transform: translateY(0px) scale(1); }
+  33% { transform: translateY(-10px) scale(1.05); }
+  66% { transform: translateY(8px) scale(0.95); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 6s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb; /* Tailwind gray-200 */
+  border-radius: 3px;
+}
+
+/* Reset unwanted pseudo-elements */
+img::before,
+img::after {
+  content: none !important;
+}
+
+
+
+
+
+
+
+
+/* 👌 Smooth Slide In Right */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(60px);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  60% {
+    transform: translateX(10px);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 👌 Smooth Slide In Left */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-60px);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  60% {
+    transform: translateX(-10px);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
