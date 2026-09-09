@@ -29,6 +29,8 @@ const Explore = () => {
       searchParams.get("location") || ""
     );
 
+    const [searchMessage, setSearchMessage] =
+  useState("");
   /*
    * ---------------------------------------------------------
    * PROPERTY TYPE
@@ -123,15 +125,35 @@ const Explore = () => {
    */
 
   const handleSearch = (data) => {
-    setLocation(
-      data?.location?.trim() || ""
-    );
+  const searchedLocation =
+    data?.location?.trim() || "";
 
-    setSelectedType(
-      data?.propertyType || ""
-    );
-  };
+  const searchedType =
+    data?.propertyType || "";
 
+  setLocation(searchedLocation);
+  setSelectedType(searchedType);
+
+  if (searchedLocation && searchedType) {
+    setSearchMessage(
+      `Showing ${searchedType} stays in ${searchedLocation}`
+    );
+  } else if (searchedLocation) {
+    setSearchMessage(
+      `Showing stays in ${searchedLocation}`
+    );
+  } else if (searchedType) {
+    setSearchMessage(
+      `Showing ${searchedType} stays`
+    );
+  } else {
+    setSearchMessage("Showing all available stays");
+  }
+
+  setTimeout(() => {
+    setSearchMessage("");
+  }, 3000);
+};
 
   /*
    * ---------------------------------------------------------
@@ -368,7 +390,25 @@ const Explore = () => {
                   }}
                   onSearch={handleSearch}
                 />
-
+{searchMessage && (
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: -8,
+    }}
+    animate={{
+      opacity: 1,
+      y: 0,
+    }}
+    exit={{
+      opacity: 0,
+      y: -8,
+    }}
+    className="mt-3 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm font-medium text-white backdrop-blur-xl"
+  >
+    ✓ {searchMessage}
+  </motion.div>
+)}
               </div>
 
             </motion.div>
